@@ -23,8 +23,8 @@ To prepare your modpack for Cleanroom Loader, review the lists below and make re
 | **Raw Input**                   | Already included in Cleanroom.                              | :no_entry_sign: Remove                                                                                                                                                                                      |
 | **Secret Rooms**                | Has an issue with updater                                   | :no_entry_sign: Disable the update checker in config file                                                                                                                                                   |
 | **SerializationIsBad**          | Redundant. Modern Java versions fix the issue this solves   | :no_entry_sign: Remove                                                                                                                                                                                      |
-| **TexFix**                      | Merged and rewritten in LoliASM                         | :white_check_mark: Use **[LoliASM](https://www.curseforge.com/minecraft/mc-mods/lolasm)**                                                                                                               |
-| **VanillaFix**                  | Merged and improved in LoliASM                          | :white_check_mark: Use **[LoliASM](https://www.curseforge.com/minecraft/mc-mods/lolasm)**                                                                                                               |
+| **TexFix**                      | Merged and rewritten in CensoredASM                         | :white_check_mark: Use **[CensoredASM](https://www.curseforge.com/minecraft/mc-mods/lolasm)**                                                                                                               |
+| **VanillaFix**                  | Merged and improved in CensoredASM                          | :white_check_mark: Use **[CensoredASM](https://www.curseforge.com/minecraft/mc-mods/lolasm)**                                                                                                               |
 | **Sound Physics**               | ASM incompat                                                | :white_check_mark: Use **[Sound Physics Remixin](https://www.curseforge.com/minecraft/mc-mods/sound-physics-remixin)**                                                                                      |
 | **Custom Loading Screen**       | Incompat with new GSON                                      | :white_check_mark: Use the build from **[this issue page](https://github.com/AlexIIL/CustomLoadingScreen/issues/84)**                                                                                       |
 
@@ -51,7 +51,7 @@ Universal Tweaks supersedes a lot of mods which will be mostly not mentioned her
 The most prominent Render optimization mods for **Minecraft 1.12.2** are:
 
 - **[Optifine](https://optifine.net/adloadx?f=preview_OptiFine_1.12.2_HD_U_G6_pre1.jar&x=c2f6)**
-- **[Celeritas](https://github.com/kappa-maintainer/Celeritas-auto-build/releases)** (Requires **_Cleanroom Loader_**, use the [version 2.3.0](https://github.com/kappa-maintainer/Celeritas-auto-build/releases/download/release%2F2.3.0-dev.13-54-g9e892798-20250819T004238/celeritas-forge-mc12.2-2.3.0-dev.jar) since 2.4.0 breaks with LoliASM)
+- **[Celeritas](https://github.com/kappa-maintainer/Celeritas-auto-build/releases)** (Requires **_Cleanroom Loader_**, use the [version 2.3.0](https://github.com/kappa-maintainer/Celeritas-auto-build/releases/download/release%2F2.3.0-dev.13-54-g9e892798-20250819T004238/celeritas-forge-mc12.2-2.3.0-dev.jar) since 2.4.0 breaks with CensoredASM)
 - **[Nothirium](https://www.curseforge.com/minecraft/mc-mods/nothirium)** (Also requires **[Naughthirium](https://www.curseforge.com/minecraft/mc-mods/naughthirium)**)
 
 ::: info Note {id="note"}

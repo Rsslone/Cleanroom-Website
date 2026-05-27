@@ -15,7 +15,7 @@ changed.
 
 :::::::::: details Note {open id="note"}
 Only stats that extend `matteroverdrive.data.biostats.AbstractBioticStat`
-can be mutated through this compat. Most built-in stats qualify; mods adding
+can be mutated through this compat. Mods adding
 fully custom `IBioticStat` implementations may not be patchable here.
 ::::::::::
 
@@ -41,11 +41,9 @@ mods.matteroverdrive.android/* Used as page default */ // [!code focus]
     mods.matteroverdrive.android.setXp(IBioticStat, int xp)
     ```
 
-- Forces the stat enabled or disabled regardless of blacklist; pass `null` to
-  clear the override:
+- Forces the stat enabled or disabled, overriding config-based rules:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.android.setEnabled(IBioticStat, Boolean enabled)
     mods.matteroverdrive.android.enable(IBioticStat)
     mods.matteroverdrive.android.disable(IBioticStat)
     ```

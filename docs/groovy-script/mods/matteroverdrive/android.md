@@ -1,22 +1,22 @@
 ---
 title: "Android Biotic Stats"
 titleTemplate: "MatterOverdrive: Refitted | CleanroomMC"
-description: "Tweak Android biotic stats: xp cost, required items, enable/disable."
-source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/master/src/main/java/matteroverdrive/compat/modules/groovyscript/AndroidCompat.java"
+description: "Tweak Android biotic stat parameters such as XP cost, required items, and enabled state."
+source_code_link: "https://github.com/CleanroomMC/GroovyScript/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Android.java"
 ---
 
-# Android Biotic Stats
+# Android Biotic Stats (MatterOverdrive: Refitted)
 
 ## Description
 
-Controls Matter Overdrive's Android biotic stat tree. Existing
-stats can be enabled, disabled, re-priced, or have their unlock requirements
-changed.
+Tweak Android biotic stat parameters such as XP cost, required items, and enabled state.
 
-:::::::::: details Note {open id="note"}
-Only stats that extend `matteroverdrive.data.biostats.AbstractBioticStat`
-can be mutated through this compat. Mods adding
-fully custom `IBioticStat` implementations may not be patchable here.
+:::::::::: details Info {open id="info"}
+Use the `androidStat(name)` bracket handler to obtain an IBioticStat.
+::::::::::
+
+:::::::::: details Tip {open id="tip"}
+Use the command `/android list` to print all registered biotic stat names to chat.
 ::::::::::
 
 ## Identifier
@@ -29,97 +29,78 @@ Any of these can be used to refer to this compat:
 
 ```groovy:no-line-numbers {1}
 mods.matteroverdrive.android/* Used as page default */ // [!code focus]
+mods.matteroverdrive.Android
 ```
 
 ::::::::::
 
-## Tweaking Stats
+## Editing Values
 
-- Sets the xp cost to unlock or level up the given stat:
+- Set the XP cost in levels required for the given biotic stat:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.android.setXp(IBioticStat, int xp)
+    mods.matteroverdrive.android.setXp(IBioticStat, int)
     ```
 
-- Forces the stat enabled or disabled, overriding config-based rules:
+- Force the given biotic stat to be enabled, overriding config-based rules:
 
     ```groovy:no-line-numbers
     mods.matteroverdrive.android.enable(IBioticStat)
+    ```
+
+- Force the given biotic stat to be disabled, overriding config-based rules:
+
+    ```groovy:no-line-numbers
     mods.matteroverdrive.android.disable(IBioticStat)
     ```
 
-- Adds or clears the required items list for a stat:
+:::::::::: details Example {open id="example"}
+```groovy:no-line-numbers
+mods.matteroverdrive.android.setXp(androidStat('shield'), 25)
+```
+
+::::::::::
+
+## Adding Entries
+
+- Add an item that must be present in the player's inventory to install the given biotic stat:
 
     ```groovy:no-line-numbers
     mods.matteroverdrive.android.addRequiredItem(IBioticStat, ItemStack)
+    ```
+
+:::::::::: details Example {open id="example"}
+```groovy:no-line-numbers
+mods.matteroverdrive.android.addRequiredItem(androidStat('shield'), item('minecraft:iron_ingot') * 5)
+```
+
+::::::::::
+
+## Removing Entries
+
+- Unregister a biotic stat entirely, preventing it from appearing or functioning:
+
+    ```groovy:no-line-numbers
+    mods.matteroverdrive.android.unregister(IBioticStat)
+    ```
+
+- Remove all required installation items from the given biotic stat:
+
+    ```groovy:no-line-numbers
     mods.matteroverdrive.android.clearRequiredItems(IBioticStat)
     ```
 
 :::::::::: details Example {open id="example"}
 ```groovy:no-line-numbers
-def shield = androidStat('shield')
-mods.matteroverdrive.android.setXp(shield, 50)
-mods.matteroverdrive.android.clearRequiredItems(shield)
-mods.matteroverdrive.android.addRequiredItem(shield, item('minecraft:iron_ingot') * 8)
-mods.matteroverdrive.android.disable(androidStat('cloak'))
+mods.matteroverdrive.android.unregister(androidStat('cloak'))
 ```
 
 ::::::::::
 
-## Unregistering Stats
+## Getting the value of entries
 
-- Removes a stat from the registry. This will gray out the ability, and pass through dependants of the stat, if you want the full chain to be removed, unregister all stats individually.
+- Returns a sorted list of all currently registered biotic stat unlocalized names:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.android.unregister(String unlocalizedName)
+    mods.matteroverdrive.android.getStatNames()
     ```
-
-:::::::::: details Example {open id="example"}
-```groovy:no-line-numbers
-mods.matteroverdrive.android.unregister('cloak')
-```
-
-::::::::::
-
-## Object Mapper
-
-The `androidStat` bracket handler resolves an unlocalized name to its
-`IBioticStat`:
-
-```groovy:no-line-numbers
-androidStat('shield')
-androidStat('nightvision')
-```
-
-### All Built-in Stat Names
-
-| Name | Description |
-|---|---|
-| `teleport` | Short-range teleport |
-| `nanobots` | Nanobot healing |
-| `nano_armor` | Nano-scale armor plating |
-| `floatation` | Water/lava flotation |
-| `speed` | Movement speed boost |
-| `high_jump` | Increased jump height |
-| `inertial_dampers` | Fall damage reduction |
-| `equalizer` | Spacetime equalizer ability |
-| `shield` | Energy shield |
-| `auto_shield` | Automatic shield activation |
-| `cloak` | Optical cloaking |
-| `attack` | Melee damage boost |
-| `flash_cooling` | Flash cooling / fire immunity |
-| `shockwave` | Melee shockwave burst |
-| `nightvision` | Night vision |
-| `minimap` | Minimap overlay |
-| `step_assist` | Step-up assist |
-| `zero_calories` | Zero caloric consumption |
-| `oxygen` | Underwater oxygen supply |
-| `wireless_charger` | Wireless energy charging |
-| `item_magnet` | Item attraction magnet |
-| `air_dash` | Mid-air dash |
-| `tan_temperature` | Temperature regulation *(Requires Tough As Nails or Simple Difficulty)* |
-
-:::::::::: details Note {open id="note"}
-`tan_temperature` is always registered, however it only has an effect when [Tough As Nails](https://www.curseforge.com/minecraft/mc-mods/tough-as-nails)
-or [Simple Difficulty](https://www.curseforge.com/minecraft/mc-mods/simple-difficulty) is installed.
-::::::::::

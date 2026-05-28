@@ -1,15 +1,15 @@
 ---
 title: "Inscriber"
 titleTemplate: "MatterOverdrive: Refitted | CleanroomMC"
-description: "Add or remove recipes for the Inscriber: two item inputs, one item output, plus energy and time costs."
-source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/master/src/main/java/matteroverdrive/compat/modules/groovyscript/InscriberCompat.java"
+description: "Add or remove recipes from the Inscriber."
+source_code_link: "https://github.com/CleanroomMC/GroovyScript/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Inscriber.java"
 ---
 
 # Inscriber (MatterOverdrive: Refitted)
 
 ## Description
 
-Add or remove inscriber recipes.
+Add or remove recipes from the Inscriber.
 
 ## Identifier
 
@@ -21,15 +21,22 @@ Any of these can be used to refer to this compat:
 
 ```groovy:no-line-numbers {1}
 mods.matteroverdrive.inscriber/* Used as page default */ // [!code focus]
+mods.matteroverdrive.Inscriber
 ```
 
 ::::::::::
 
 ## Adding Recipes
 
+- Add the given recipe to the recipe list:
+
+    ```groovy:no-line-numbers
+    mods.matteroverdrive.inscriber.add(InscriberRecipe)
+    ```
+
 ### Recipe Builder
 
-Just like other recipe types, the Inscriber uses a recipe builder.
+Just like other recipe types, the Inscriber also uses a recipe builder.
 
 Don't know what a builder is? Check [the builder info page](../../getting_started/builder.md) out.
 
@@ -37,7 +44,7 @@ Don't know what a builder is? Check [the builder info page](../../getting_starte
 
 ---
 
-- Create the Recipe Builder.
+- Build and register a new Inscriber recipe with two inputs, one output, an energy cost, and a processing time.
 
     ```groovy:no-line-numbers
     mods.matteroverdrive.inscriber.recipeBuilder()
@@ -45,9 +52,7 @@ Don't know what a builder is? Check [the builder info page](../../getting_starte
 
 ---
 
-- `IngredientList<IIngredient>`. Sets the item inputs of the recipe. Requires
-  exactly 2. The first is treated as the primary input, the second as the
-  secondary input.
+- `IngredientList<IIngredient>`. Sets the item inputs of the recipe. Requires exactly 2.
 
     ```groovy:no-line-numbers
     input(IIngredient)
@@ -59,18 +64,20 @@ Don't know what a builder is? Check [the builder info page](../../getting_starte
 
     ```groovy:no-line-numbers
     output(ItemStack)
+    output(ItemStack...)
+    output(Collection<ItemStack>)
     ```
 
-- `int`. Sets the FE cost. Must be greater than 0. (Default `1000`).
-
-    ```groovy:no-line-numbers
-    energy(int)
-    ```
-
-- `int`. Sets the processing time in ticks. Must be greater than 0. (Default `60`).
+- `int`. Ticks required to complete the recipe. Must be greater than 0. Default: 60. (Default `60`).
 
     ```groovy:no-line-numbers
     time(int)
+    ```
+
+- `int`. Energy consumed per recipe in RF. Must be greater than 0. Default: 1000. (Default `1000`).
+
+    ```groovy:no-line-numbers
+    energy(int)
     ```
 
 ---
@@ -100,20 +107,25 @@ mods.matteroverdrive.inscriber.recipeBuilder()
 
 ## Removing Recipes
 
-- Removes any Inscriber recipe whose output matches the given stack:
+- Removes the given recipe from the recipe list:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.inscriber.removeByOutput(ItemStack)
+    mods.matteroverdrive.inscriber.remove(InscriberRecipe)
     ```
 
-- Removes any Inscriber recipe whose primary and secondary input pair match
-  the given stacks (order matters):
+- Remove all Inscriber recipes whose main and secondary inputs match the given ingredients:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.inscriber.removeByInputs(ItemStack main, ItemStack sec)
+    mods.matteroverdrive.inscriber.removeByInputs(IIngredient, IIngredient)
     ```
 
-- Removes all registered Inscriber recipes:
+- Remove all Inscriber recipes whose output matches the given ingredient:
+
+    ```groovy:no-line-numbers
+    mods.matteroverdrive.inscriber.removeByOutput(IIngredient)
+    ```
+
+- Removes all registered recipes:
 
     ```groovy:no-line-numbers
     mods.matteroverdrive.inscriber.removeAll()
@@ -121,8 +133,7 @@ mods.matteroverdrive.inscriber.recipeBuilder()
 
 :::::::::: details Example {open id="example"}
 ```groovy:no-line-numbers
-mods.matteroverdrive.inscriber.removeByOutput(item('matteroverdrive:circuit_basic'))
-mods.matteroverdrive.inscriber.removeByInputs(item('minecraft:redstone'), item('minecraft:gold_ingot'))
+mods.matteroverdrive.inscriber.removeByInputs(item('matteroverdrive:isolinear_circuit'), item('minecraft:gold_ingot'))
 mods.matteroverdrive.inscriber.removeAll()
 ```
 
@@ -130,8 +141,7 @@ mods.matteroverdrive.inscriber.removeAll()
 
 ## Getting the value of recipes
 
-- Iterates through every entry in the registry, with the ability to call
-  remove on any element to remove it:
+- Iterates through every entry in the registry, with the ability to call remove on any element to remove it:
 
     ```groovy:no-line-numbers
     mods.matteroverdrive.inscriber.streamRecipes()

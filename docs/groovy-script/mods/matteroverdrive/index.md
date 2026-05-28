@@ -9,10 +9,11 @@ aside: false
 
 Has 4 subcategories.
 
-* [Matter Registry](./matter.md)
+* [Android Biotic Stats](./android.md)
 
 * [Inscriber](./inscriber.md)
 
-* [Android Biotic Stats](./android.md)
+* [Matter Registry](./matter.md)
 
 * [Replicator Blacklist](./replicator.md)
+

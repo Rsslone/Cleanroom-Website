@@ -2,7 +2,7 @@
 title: "Android Biotic Stats"
 titleTemplate: "MatterOverdrive: Refitted | CleanroomMC"
 description: "Tweak Android biotic stat parameters such as XP cost, required items, and enabled state."
-source_code_link: "https://github.com/CleanroomMC/GroovyScript/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Android.java"
+source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Android.java"
 ---
 
 # Android Biotic Stats (MatterOverdrive: Refitted)

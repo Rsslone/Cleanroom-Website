@@ -2,7 +2,7 @@
 title: "Replicator Blacklist"
 titleTemplate: "MatterOverdrive: Refitted | CleanroomMC"
 description: "Add items to the replicator blacklist. Blacklisted items cannot be replicated even if they have a matter value assigned."
-source_code_link: "https://github.com/CleanroomMC/GroovyScript/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Replicator.java"
+source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Replicator.java"
 ---
 
 # Replicator Blacklist (MatterOverdrive: Refitted)

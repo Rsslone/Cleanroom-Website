@@ -2,7 +2,7 @@
 title: "Inscriber"
 titleTemplate: "MatterOverdrive: Refitted | CleanroomMC"
 description: "Add or remove recipes from the Inscriber."
-source_code_link: "https://github.com/CleanroomMC/GroovyScript/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Inscriber.java"
+source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Inscriber.java"
 ---
 
 # Inscriber (MatterOverdrive: Refitted)
@@ -68,13 +68,13 @@ Don't know what a builder is? Check [the builder info page](../../getting_starte
     output(Collection<ItemStack>)
     ```
 
-- `int`. Ticks required to complete the recipe. Must be greater than 0. Default: 60. (Default `60`).
+- `int`. Ticks required to complete the recipe. Must be greater than 0. (Default `60`).
 
     ```groovy:no-line-numbers
     time(int)
     ```
 
-- `int`. Energy consumed per recipe in RF. Must be greater than 0. Default: 1000. (Default `1000`).
+- `int`. Energy consumed per recipe in RF. Must be greater than 0. (Default `1000`).
 
     ```groovy:no-line-numbers
     energy(int)

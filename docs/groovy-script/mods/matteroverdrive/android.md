@@ -42,13 +42,13 @@ mods.matteroverdrive.Android
     mods.matteroverdrive.android.setXp(IBioticStat, int)
     ```
 
-- Force the given biotic stat to be enabled, overriding config-based rules:
+- Set the given biotic stat to be enabled, overriding config-based rules:
 
     ```groovy:no-line-numbers
     mods.matteroverdrive.android.enable(IBioticStat)
     ```
 
-- Force the given biotic stat to be disabled, overriding config-based rules:
+- Set the given biotic stat to be disabled, overriding config-based rules, disabling the stat features:
 
     ```groovy:no-line-numbers
     mods.matteroverdrive.android.disable(IBioticStat)
@@ -78,7 +78,7 @@ mods.matteroverdrive.android.addRequiredItem(androidStat('shield'), item('minecr
 
 ## Removing Entries
 
-- Unregister a biotic stat entirely, preventing it from appearing or functioning:
+- Set the given biotic stat to be delisted. Cannot be installed from the Android Station, but current installs continue to function:
 
     ```groovy:no-line-numbers
     mods.matteroverdrive.android.unregister(IBioticStat)

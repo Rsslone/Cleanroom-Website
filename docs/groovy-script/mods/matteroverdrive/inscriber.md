@@ -68,13 +68,13 @@ Don't know what a builder is? Check [the builder info page](../../getting_starte
     output(Collection<ItemStack>)
     ```
 
-- `int`. Ticks required to complete the recipe. Must be greater than 0. (Default `60`).
+- `int`. Ticks required to complete the recipe. Must be greater than 0. (Default `300`).
 
     ```groovy:no-line-numbers
     time(int)
     ```
 
-- `int`. Energy consumed per recipe in RF. Must be greater than 0. (Default `1000`).
+- `int`. Energy consumed per recipe in RF. Must be greater than 0. (Default `64000`).
 
     ```groovy:no-line-numbers
     energy(int)
@@ -96,8 +96,8 @@ mods.matteroverdrive.inscriber.recipeBuilder()
     .input(item('minecraft:redstone'))
     .input(item('minecraft:gold_ingot'))
     .output(item('matteroverdrive:circuit_basic'))
-    .energy(1000)
-    .time(80)
+    .energy(32000)
+    .time(120)
     .register()
 ```
 

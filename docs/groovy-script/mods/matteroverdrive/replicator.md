@@ -31,24 +31,13 @@ mods.matteroverdrive.Replicator
 - Add an item, item stack, or ingredient to the replicator blacklist:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.replicator.add(Item)
-    ```
-
-- Add an item, item stack, or ingredient to the replicator blacklist:
-
-    ```groovy:no-line-numbers
-    mods.matteroverdrive.replicator.add(ItemStack)
-    ```
-
-- Add an item, item stack, or ingredient to the replicator blacklist:
-
-    ```groovy:no-line-numbers
     mods.matteroverdrive.replicator.add(IIngredient)
     ```
 
 :::::::::: details Example {open id="example"}
 ```groovy:no-line-numbers
-mods.matteroverdrive.replicator.add(item('matteroverdrive:matter_dust').getItem())
+mods.matteroverdrive.replicator.add(item('matteroverdrive:matter_dust'))
+mods.matteroverdrive.replicator.add(ore('blockGold'))
 ```
 
 ::::::::::

@@ -28,50 +28,32 @@ mods.matteroverdrive.Matter
 
 ## Adding Entries
 
-- Set the matter value for an item, replacing any existing entry:
+- Set the matter value for an item or ore dictionary group, replacing any existing entry:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.matter.add(Item, int)
+    mods.matteroverdrive.matter.add(IIngredient, int)
     ```
 
-- Set the matter value for an item, replacing any existing entry:
+- Set the matter value for an item or ore dictionary group, replacing any existing entry:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.matter.add(Item, IMatterEntryHandler)
-    ```
-
-- Set the matter value for all items matching an ore dictionary name, replacing any existing ore entry:
-
-    ```groovy:no-line-numbers
-    mods.matteroverdrive.matter.addOre(String, int)
-    ```
-
-- Set the matter value for all items matching an ore dictionary name, replacing any existing ore entry:
-
-    ```groovy:no-line-numbers
-    mods.matteroverdrive.matter.addOre(String, IMatterEntryHandler)
+    mods.matteroverdrive.matter.add(IIngredient, IMatterEntryHandler)
     ```
 
 :::::::::: details Example {open id="example"}
 ```groovy:no-line-numbers
 mods.matteroverdrive.matter.add(item('minecraft:gold_ingot'), 256)
-mods.matteroverdrive.matter.addOre('oreGold', 256)
+mods.matteroverdrive.matter.add(ore('blockGold'), 256)
 ```
 
 ::::::::::
 
 ## Removing Entries
 
-- Remove the matter entry for an item:
+- Remove the matter entry for an item or ore dictionary group:
 
     ```groovy:no-line-numbers
-    mods.matteroverdrive.matter.remove(Item)
-    ```
-
-- Remove the matter entry for an ore dictionary name:
-
-    ```groovy:no-line-numbers
-    mods.matteroverdrive.matter.removeOre(String)
+    mods.matteroverdrive.matter.remove(IIngredient)
     ```
 
 - Prevent a mod's items from being automatically assigned matter values during scanning. Use modID:
@@ -82,8 +64,8 @@ mods.matteroverdrive.matter.addOre('oreGold', 256)
 
 :::::::::: details Example {open id="example"}
 ```groovy:no-line-numbers
-mods.matteroverdrive.matter.remove(item('minecraft:apple').getItem())
-mods.matteroverdrive.matter.removeOre('oreCopper')
+mods.matteroverdrive.matter.remove(item('minecraft:apple'))
+mods.matteroverdrive.matter.remove(ore('ingotCopper'))
 mods.matteroverdrive.matter.blacklistMod('thaumcraft')
 ```
 

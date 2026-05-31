@@ -2,7 +2,7 @@
 title: "Matter Registry"
 titleTemplate: "MatterOverdrive: Refitted | CleanroomMC"
 description: "Modify the matter value table used by Matter Overdrive's scanner, replicator, and decomposer. Supports individual items, ore dictionary, or entire modIDs."
-source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Matter.java"
+source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/master/src/main/java/matteroverdrive/compat/modules/groovyscript/Matter.java"
 ---
 
 # Matter Registry (MatterOverdrive: Refitted)

@@ -2,7 +2,7 @@
 title: "Inscriber"
 titleTemplate: "MatterOverdrive: Refitted | CleanroomMC"
 description: "Add or remove recipes from the Inscriber."
-source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/v1.4.3/src/main/java/matteroverdrive/compat/modules/groovyscript/Inscriber.java"
+source_code_link: "https://github.com/Refitbench/MatterOverdrive/blob/master/src/main/java/matteroverdrive/compat/modules/groovyscript/Inscriber.java"
 ---
 
 # Inscriber (MatterOverdrive: Refitted)
